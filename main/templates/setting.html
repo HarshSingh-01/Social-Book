@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'assets/images/favicon.png' %}" rel="icon" type="image/png">
+    <link href="{% static 'images/fav-icon.png' %}" rel="icon" type="image/png">
     <title>Settings</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,22 +25,32 @@
 
             <div class="flex items-center lg:justify-between justify-around">
 
-                <a href="trending.html">
+                <a href="/">
                    <b><h1 style="font-size: 1.5rem;">Social Book</h1></b>
                 </a>
 
                 <div class="capitalize flex font-semibold hidden lg:block my-2 space-x-3 text-center text-sm">
                     
-                    <a href="/" class="bg-pink-500 pink-500 px-6 py-3 rounded-md shadow text-white">Go to Home</a>
+                    <a href="/profile/{{user_profile.user.username}}">
+                        <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">  
+                            <img src="{{user_profile.profileImg.url}}" class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                        </div>
+                        <div uk-drop="mode: click;offset:9" class="header_dropdown profile_dropdown border-t">
+                            <ul>
+                                <li><a href="../profile/{{user_profile.user.username}}">Profile</a> </li>
+                                <li><a href="settings"> Account setting </a> </li>
+                                {% comment %} <li><a href="explore.html">explore </a> </li>
+                                <li><a href="#"> Help </a> </li> {% endcomment %}
+                                <li><a href="logout"> Log Out</a></li>
+                            </ul>
+                        </div>
+                    </a>
                 </div>
+                
 
             </div>
         </div>
     </div>
-       
-
-          
-
             <div class="container m-auto"> 
 
                 <h1 class="text-2xl leading-none text-gray-900 tracking-tight mt-3"><i style='font-size:24px' class='fas'>&#xf4fe;</i></h1>
@@ -61,9 +71,10 @@
                         <p></p>
                     </div>
                     <div class="bg-white rounded-md lg:shadow-lg shadow col-span-2">
-    
+                        <form action='' method='POST' enctype='multipart/form-data'>
+                            {% csrf_token %}
                        <div class="grid grid-cols-2 gap-3 lg:p-6 p-4">
-                           <div>
+                           {% comment %} <div>
                                <label for=""> First name</label>
                                <input type="text" placeholder="Your name.." class="shadow-none bg-gray-100">
                            </div>
@@ -74,20 +85,27 @@
                             <div class="col-span-2">
                                 <label for=""> Email</label>
                                 <input type="text" placeholder="Your name.." class="shadow-none bg-gray-100">
-                            </div>
+                            </div> {% endcomment %}
+
                             <div class="col-span-2">
-                                <label for="about">About me</label>  
-                                <textarea id="about" name="about" rows="3"  class="shadow-none bg-gray-100"></textarea>
-                            </div> 
+                                <label for=""> Profile Image</label>
+                                <img src='{{user_profile.profileImg.url}}' style="width:200px;"/>
+                                <input type="file" placeholder="Upload your profile image." name="profileImg" class="shadow-none bg-gray-100">
+                            </div>
+                            
+                            <div class="col-span-2">
+                                <label for="about">Bio</label>  
+                                <textarea id="about" name="bio" rows="3"  class="shadow-none bg-gray-100">{{user_profile.bio}}</textarea>
+                            </div>
                             <div class="col-span-2">
                                 <label for=""> Location</label>
-                                <input type="text" placeholder="" class="shadow-none bg-gray-100">
+                                <input type="text" value="{{user_profile.location}}" name="location" class="shadow-none bg-gray-100">
                             </div>
-                            <div>
+                            {% comment %} <div>
                                <label for=""> Working at</label>
                                <input type="text" placeholder="" class="shadow-none bg-gray-100">
                             </div> 
-                            <div>
+                             <div>
                                <label for=""> Relationship </label>
                                <select id="relationship" name="relationship"  class="shadow-none bg-gray-100">
                                 <option value="0">None</option>
@@ -96,17 +114,18 @@
                                 <option value="3">Married</option>
                                 <option value="4">Engaged</option>
                               </select>
-                            </div>
+                            </div> {% endcomment %}
                        </div> 
     
                        <div class="bg-gray-10 p-6 pt-0 flex justify-end space-x-3">
-                           <button class="p-2 px-4 rounded bg-gray-50 text-red-500"> Cancel </button>
-                           <button type="button" class="button bg-blue-700"> Save </button>
+                           <button class="p-2 px-4 rounded bg-gray-50 text-red-500"> <a href='../'>Cancel</a> </button>
+                           <button type="submit" class="button bg-blue-700"> Save</button>
                        </div>
     
                     </div>
+                </form>
 
-                    <div>
+                    {% comment %} <div>
                         <h3 class="text-xl mb-2"> Privacy</h3>
                         <p> </p>
                     </div>
@@ -147,7 +166,7 @@
                                     <label class="switch"><input type="checkbox"><span class="switch-button"></span> </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                         <hr>
                         <div class="flex justify-between items-center">
                             <div>
@@ -160,7 +179,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>{% endcomment %}
     
                     </div>
                     <br>
