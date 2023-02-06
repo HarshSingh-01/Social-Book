@@ -38,6 +38,9 @@ python3 manage.py runserver
 ### 4. Stop the server
 Press Ctrl + C to stop the server
 
+## Conclusion
+This is the a social media clone project and open source to everyone.
+
 
 
 
