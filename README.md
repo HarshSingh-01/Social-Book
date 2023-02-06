@@ -24,6 +24,20 @@ pip install -r requirements.txt
 pip3 install -r requirements.txt
 ```
 
+<strong>OR</strong>
+
+#### Windows
+```sh
+py -m pip install Django
+pip install Pillow
+```
+#### MacOS/Linux
+```sh
+python -m pip install Django
+pip install Pillow
+```
+
+
 ### 3. Start the server
 
 #### Windows
@@ -33,8 +47,14 @@ python manage.py runserver
 
 #### MacOS/Linux
 ```sh
+python manage.py runserver
+```
+<strong>OR</strong>
+
+```sh
 python3 manage.py runserver
 ```
+
 ### 4. Stop the server
 Press Ctrl + C to stop the server
 
