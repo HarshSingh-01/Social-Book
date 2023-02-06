@@ -28,13 +28,11 @@ pip3 install -r requirements.txt
 
 #### Windows
 ```sh
-py -m pip install Django
-pip install Pillow
+py -m pip install Django Pillow
 ```
 #### MacOS/Linux
 ```sh
-python -m pip install Django
-pip install Pillow
+python -m pip install Django Pillow
 ```
 
 
